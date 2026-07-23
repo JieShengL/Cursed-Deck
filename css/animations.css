@@ -1,0 +1,539 @@
+/*Programmer name: Mr Jason Lim, Mr Khow Yong Jing, Mr Lin Xu Zhi, Mr Mervin Chan
+Program name: animations.css
+Description: animation and visual effects implementation 
+First written on: Sat, 6-June-2026
+Edited on: Thurs, 25-June-2026*/
+
+/*======================================================
+    ANIMATIONS.CSS
+======================================================*/
+
+
+/*======================================================
+    BUTTON HOVER
+======================================================*/
+
+button{
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background-color .2s ease;
+
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.35);
+
+}
+
+button:active{
+
+    transform:scale(.95);
+
+}
+
+
+/*======================================================
+    DICE
+======================================================*/
+
+.dice{
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        opacity .2s ease;
+
+    position: relative;
+    
+    z-index: 50;
+}
+
+.dice:hover {
+    transform: scale(1.08);
+}
+
+.dice.dragging {
+    opacity: 0.5;
+    transform: rotate(8deg) scale(1.15) !important;
+    z-index: 999999 !important;
+}
+
+.dice.used{
+
+    opacity:.35;
+
+}
+
+
+/*======================================================
+    SLOT
+======================================================*/
+
+.slot{
+
+    transition:
+        background-color .2s,
+        border-color .2s,
+        transform .2s;
+
+}
+
+.slot.dragover {
+    outline: 2px solid gold;
+}
+
+.slot.filled{
+
+    animation:slotFill .25s ease;
+
+}
+
+@keyframes slotFill{
+
+    0%{
+
+        transform:scale(.85);
+
+    }
+
+    70%{
+
+        transform:scale(1.08);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*======================================================
+    OPERATION CARD
+======================================================*/
+
+.operationCard{
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.operationCard:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.operationCard.selected{
+
+    animation:selectedCard .8s infinite alternate;
+
+}
+
+@keyframes selectedCard{
+
+    from{
+
+        box-shadow:
+            0 0 10px gold;
+
+    }
+
+    to{
+
+        box-shadow:
+            0 0 25px gold;
+
+    }
+
+}
+
+
+/*======================================================
+    BOSS DAMAGE SHAKE
+======================================================*/
+
+.bossHit{
+
+    animation:bossHit .45s;
+
+}
+
+@keyframes bossHit{
+
+    0%{
+
+        transform:translateX(0);
+
+    }
+
+    20%{
+
+        transform:translateX(-10px);
+
+    }
+
+    40%{
+
+        transform:translateX(10px);
+
+    }
+
+    60%{
+
+        transform:translateX(-8px);
+
+    }
+
+    80%{
+
+        transform:translateX(8px);
+
+    }
+
+    100%{
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+/*======================================================
+    HP BAR
+======================================================*/
+
+#bossHPBar{
+
+    transition:
+
+        width .8s ease,
+
+        background-color .5s ease;
+
+}
+
+
+/*======================================================
+    FLOATING DAMAGE
+======================================================*/
+
+.floatingDamage{
+
+    position:absolute;
+
+    color:#ffd700;
+
+    font-size:38px;
+
+    font-weight:bold;
+
+    text-shadow:
+
+        2px 2px 6px black;
+
+    pointer-events:none;
+
+    animation:floatingDamage 1.2s forwards;
+
+}
+
+@keyframes floatingDamage{
+
+    0%{
+
+        opacity:1;
+
+        transform:
+
+            translateY(0)
+
+            scale(1);
+
+    }
+
+    100%{
+
+        opacity:0;
+
+        transform:
+
+            translateY(-80px)
+
+            scale(1.4);
+
+    }
+
+}
+
+
+/*======================================================
+    TOTAL DAMAGE
+======================================================*/
+
+.damageFlash{
+
+    animation:damageFlash .5s;
+
+}
+
+@keyframes damageFlash{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.25);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+/*======================================================
+    RESULT POPUP
+======================================================*/
+
+#resultPopup{
+
+    animation:fadeIn .35s;
+
+}
+
+#popupContent{
+
+    animation:popupScale .35s;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes popupScale{
+
+    from{
+
+        transform:
+
+            scale(.7);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:
+
+            scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/*======================================================
+    BOSS DEFEATED
+======================================================*/
+
+#bossImage.defeated{
+
+    animation:defeated .8s forwards;
+
+}
+
+@keyframes defeated{
+
+    0%{
+
+        opacity:1;
+
+        filter:none;
+
+    }
+
+    100%{
+
+        opacity:.3;
+
+        filter:grayscale(100%);
+
+    }
+
+}
+
+
+/*======================================================
+    ROLL DICE
+======================================================*/
+
+.rolling{
+
+    animation:rolling .5s ease;
+
+}
+
+@keyframes rolling{
+
+    0%{
+
+        transform:rotate(0deg);
+
+    }
+
+    25%{
+
+        transform:rotate(90deg);
+
+    }
+
+    50%{
+
+        transform:rotate(180deg);
+
+    }
+
+    75%{
+
+        transform:rotate(270deg);
+
+    }
+
+    100%{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+/*======================================================
+    SHAKE BUTTON
+======================================================*/
+
+.shake{
+
+    animation:shake .35s;
+
+}
+
+@keyframes shake{
+
+    0%{
+
+        transform:translateX(0);
+
+    }
+
+    25%{
+
+        transform:translateX(-5px);
+
+    }
+
+    50%{
+
+        transform:translateX(5px);
+
+    }
+
+    75%{
+
+        transform:translateX(-5px);
+
+    }
+
+    100%{
+
+        transform:translateX(0);
+
+    }
+
+}
+
+
+/*======================================================
+    FADE UTILITIES
+======================================================*/
+
+.fadeIn{
+
+    animation:fadeInOnly .4s forwards;
+
+}
+
+.fadeOut{
+
+    animation:fadeOutOnly .4s forwards;
+
+}
+
+@keyframes fadeInOnly{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes fadeOutOnly{
+
+    from{
+
+        opacity:1;
+
+    }
+
+    to{
+
+        opacity:0;
+
+    }
+
+}
