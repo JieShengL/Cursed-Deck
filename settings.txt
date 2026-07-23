@@ -1,0 +1,13 @@
+difficulty=normal
+show_damage=0
+tutorial=1
+autosave=1
+music=70
+sfx=70
+voice=34
+vibration=1
+language=
+display=fullscreen
+effects=normal
+shadows=normal
+quality=high
